@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/styles.css" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
 </head>
+
 <body>
-    <script src="./assets/script.js"></script>
+    <header>
+        <h1 class="display-4 container col-6">Weather Dashboard</h1>
+    </header>
+    <div class="search">
+        <h2 class="col-4">Search for a City:</h2>
+        <input class="user-input" placeholder="Ex. 'Austin'"></input>
+        <button class="userSearch">Search</button>
+        <!-- card -->
+        <div class="col-8">
+            <div class="card">
+                <div class="current-condition">
+                    <h3 class="subtitle"></h3>
+                    <span id="city-current-date"></span>
+                    <img id="city-current-icon"></img>
+                </h2>
+                <div id="city-container" class="list-group"></div>
+                </div>
+
+                <div class="weather-input">
+                <p class="temp">Temperature: 
+                    <span id="temp-input"></span></p>
+                <p class="humidity">Humidity:
+                    <span id="humidity-input"></span></p>
+                <p class="wind">Wind Speed:
+                    <span id="wind-input"></span></p>
+                <p class="uv">UV Index:
+                    <span id="uv-input"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
