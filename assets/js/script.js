@@ -4,12 +4,23 @@ var apiID = "3915bb75e2967e4d45ad85de1463bcf9"
 var userInput = document.querySelector("#user-input");
 var selectedCity = document.querySelector("#selected-city");
 var cityDisplay = document.querySelector("#city-display");
+var searchedCity = document.querySelector("#searched-city");
 var currentWeather = document.querySelector("#current-weather");
 var uvIndex = document.querySelector("#uv-index");
-var fiveDayForecast = document.querySelector("#5-day-forecast");
+var fiveDayForecast = document.querySelector("#five-day-forecast");
 
 var citiesArray = [];
 
+//search for a city
+
+//previously searched city data
+
+//request weather
+
+//request uv
+
+
+//this displays the current weather for a city
 var displayCurrentWeather = function(city, searchTerm) {
     cityContainerEl.textContent = '';
     citySearchTerm.textContent = searchTerm;
@@ -44,3 +55,11 @@ var displayCurrentWeather = function(city, searchTerm) {
      searchCityUV(lon, lat, city);
 
 };
+
+//uv
+
+//5 day forecast
+
+//5 day display
+
+// button functionality
