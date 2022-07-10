@@ -18,6 +18,23 @@ var citiesArray = [];
 //request weather
 
 //request uv
+var requestUV = function(lon, lat, city) {
+    var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?q=" + city + "&appid=" + key + "&lat=" + lat + "&lon=" + lon; 
+
+    fetch(uvUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(lon, lat, city) {
+                displayCurrentUv(lon, lat, city);
+            });
+        } else {
+            alert("Error:" + response.statusText);
+        }
+        })
+        
+        .catch(function(error) {
+            alert("Unable to connect to Open Weather");
+    })
+};
 
 
 //this displays the current weather for a city
@@ -63,3 +80,4 @@ var displayCurrentWeather = function(city, searchTerm) {
 //5 day display
 
 // button functionality
+userFormEl.addEventListener("submit", formSubmitHandler);
