@@ -8,14 +8,59 @@ var searchedCity = document.querySelector("#searched-city");
 var currentWeather = document.querySelector("#current-weather");
 var uvIndex = document.querySelector("#uv-index");
 var fiveDayForecast = document.querySelector("#five-day-forecast");
+var previousCity = document.getElementById("#previous-search")
 
 var citiesArray = [];
 
 //search for a city
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+
+    var city = selectedCity.value.trim();
+
+    if (city) {
+        getCurrentWeather(city);
+        getForecast(city);
+
+        cityArray.push(city);
+        localStorage.setItem("city", JSON.stringify(cityArray));
+
+        selectedCity.value = "";
+
+     } else {
+        alert("Please enter a valid name");
+    }
+};
 
 //previously searched city data
+var clickHandler = function (event) {
 
-//request weather
+    var clickCity = event.currentTarget.textContent;
+
+    getCurrentWeather(clickCity);
+    getForecast(clickCity);
+};
+
+//request API
+var getCurrentWeather = function(city) {
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
+
+    // if response was successful 
+    fetch(apiURL).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                displayCurrentWeather(data, city);
+            });
+        } else {
+            alert("Error:" + response.statusText);
+        }
+    })
+    // if network error 
+    .catch(function(error) {
+        alert("Unable to connect to Open Weather");
+    })
+
+}
 
 //request uv
 var requestUV = function(lon, lat, city) {
@@ -24,7 +69,7 @@ var requestUV = function(lon, lat, city) {
     fetch(uvUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(lon, lat, city) {
-                displayCurrentUv(lon, lat, city);
+                requestUV(lon, lat, city);
             });
         } else {
             alert("Error:" + response.statusText);
@@ -42,9 +87,9 @@ var displayCurrentWeather = function(city, searchTerm) {
     cityContainerEl.textContent = '';
     citySearchTerm.textContent = searchTerm;
 
-    var displayCurrentDate = document.querySelector("#current-date");
+    var currentDateDisplay = document.querySelector("#current-date");
     var currentDate = moment();
-    displayCurrentDate.textContent = currentDate.format("(L)");
+    currentDateDisplay.textContent = currentDate.format("(L)");
 
 
     var displayTemp = document.querySelector("#temp");
@@ -59,17 +104,17 @@ var displayCurrentWeather = function(city, searchTerm) {
     var currentWind = city.wind.speed + " MPH";
     displayWind.textContent = currentWind;
 
-    var newCityEl = document.createElement("li");
-    newCityEl.className = "list-group-item";
-    newCityEl.textContent = searchTerm;
-    newCityEl.addEventListener("click", clickHandler);
-    previousCityEl.appendChild(newCityEl);
+    var newCity = document.createElement("li");
+    newCity.className = "list-group-item";
+    newCity.textContent = searchTerm;
+    newCity.addEventListener("click", clickHandler);
+    previousCity.appendChild(newCity);
 
  
      var lon = city.coord.lon; 
      var lat = city.coord.lat; 
  
-     searchCityUV(lon, lat, city);
+     requestUV(lon, lat, city);
 
 };
 
