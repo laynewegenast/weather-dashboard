@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/style/styles.css" />
     <title>Weather Dashboard</title>
 </head>
 
 <body>
     <header>
-        <h1 class="display-4 container col-6">Weather Dashboard</h1>
+        <h1 class="title display-4 container col-6">Weather Dashboard</h1>
     </header>
-    <div class="search ">
-        <h2 class="col-4">Search for a City:</h2>
+    <div class="search card" style="width: 20rem">
+        <h2 class="search-name">Search for a City:</h2>
         <form id="user-input" class="">
         <input name ="selected-city" class="user-input" placeholder="Ex. 'Austin'"></input>
         <button class="userSearch" type="submit">Search</button>
     </form>
+    </div>
         <!-- card -->
         <div class="col-8">
             <div class="card">
@@ -43,7 +44,19 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- 5day for -->
+        <div class="row">
+            <h3 class="fiveday-header">5-Day Forecast</h3>
+        </div>
+
+        <div class="forecast row" id="fiveday-forecast-card">
+            <div class="card" id="day-1">
+                <p class="card-1" id="day-1">Date</p>
+                <p class="card-1" id="temp-1">Temp:</p>
+                <p class="card-1" id="humidity-1">Humidity:</p>
+            </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>

@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F7EDE2;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+header {
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background-image: url("../images/hero-bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: 80%;
+    z-index: 9999;
+    font-weight: bolder;
+    color: #FFFFFF;
+    background-color: #D3BBAF;
+}
+
+.user-input {
+    margin-left: 20px;
+}
+
+.search {
+   margin: 10px;
+}
+
+.userSearch {
+    color: #FFFFFF;
+    background-color: #fd5200;
+    border: none;
+    padding: 5px 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.search-name {
+    font-size: 30px;
+    color: #443627;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.weather-input {
+    color: #443627;
+    font-weight: bolder;
+    margin-left: 10px;
+}
+
+.fiveday-header {
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.forecast {
+    margin: 15px;
+}
