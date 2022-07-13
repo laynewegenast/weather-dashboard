@@ -64,5 +64,10 @@ header {
 }
 
 .forecast {
-    margin: 15px;
+    margin: 25px;
+    margin-top: 10px;
 }
+.forecast-text {
+    margin: 10px;
+}
+
