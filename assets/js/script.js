@@ -10,7 +10,7 @@ var uvIndex = document.querySelector("#uv-index");
 var fiveDayForecast = document.querySelector("#five-day-forecast");
 var previousCity = document.getElementById("#previous-search")
 
-var citiesArray = [];
+var cityArray = [];
 
 //search for a city
 var formSubmitHandler = function(event) {
@@ -43,7 +43,7 @@ var clickHandler = function (event) {
 
 //request API
 var getCurrentWeather = function(city) {
-    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiID;
 
     // if response was successful 
     fetch(apiURL).then(function(response) {
@@ -125,4 +125,4 @@ var displayCurrentWeather = function(city, searchTerm) {
 //5 day display
 
 // button functionality
-userFormEl.addEventListener("submit", formSubmitHandler);
+userInput.addEventListener("submit", formSubmitHandler);
