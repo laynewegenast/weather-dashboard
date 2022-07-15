@@ -63,10 +63,10 @@ var getCurrentWeather = function(city) {
 }
 
 //request uv
-var requestUV = function(lon, lat, city) {
-    var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?q=" + city + "&appid=" + key + "&lat=" + lat + "&lon=" + lon; 
+var displayUv = function(lon, lat, city) {
+    var uvReq = "https://api.openweathermap.org/data/2.5/uvi?q=" + city + "&appid=" + apiID + "&lat=" + lat + "&lon=" + lon; 
 
-    fetch(uvUrl).then(function(response) {
+    fetch(uvReq).then(function(response) {
         if (response.ok) {
             response.json().then(function(lon, lat, city) {
                 requestUV(lon, lat, city);
@@ -105,7 +105,7 @@ var displayCurrentWeather = function(city, searchTerm) {
     displayWind.textContent = currentWind;
 
     var newCity = document.createElement("li");
-    newCity.className = "list-group-item";
+    newCity.className = "prev-search-item";
     newCity.textContent = searchTerm;
     newCity.addEventListener("click", clickHandler);
     previousCity.appendChild(newCity);
@@ -114,12 +114,12 @@ var displayCurrentWeather = function(city, searchTerm) {
      var lon = city.coord.lon; 
      var lat = city.coord.lat; 
  
-     requestUV(lon, lat, city);
+     displayUv ((lon, lat, city));
 
 };
 
 //uv
-var uvDisplay = function(data) {
+var requestUV = function(data) {
     var uv = data.value;
         if (uv >= 6) {
             uvIndex.innerHTML=" " + uv + " ";
@@ -151,6 +151,8 @@ var requestForecast = function(city) {
      for (var i=1; i<= 5; i++) {
 
         var dayOne = document.querySelector("#forecast-1")
+        var dayOneForecast = moment().add(1, 'day').format('L')
+        dayOne.textContent = dayOneForecast
 
         var dayTwo = document.querySelector('#forecast-2')
 
@@ -159,6 +161,10 @@ var requestForecast = function(city) {
         var dayFour = document.querySelector('#forecast-4')
 
         var dayFive = document.querySelector('#forecast-5')
+
+        var tempDisplay = document.querySelector ('#temperature-${i}')
+        var dayTemp = moment().add(5, "day").format('L');
+        tempDisplay.textContent= dayTemp;
 
      }
  }
