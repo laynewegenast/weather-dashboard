@@ -152,15 +152,23 @@ var requestForecast = function(city) {
 
         var dayOne = document.querySelector("#day-1")
         var dayOneForecast = moment().add(1, 'day').format('L')
-        dayOne.textContent = dayOneForecast
+        dayOne.textContent = dayOneForecast;
 
-        var dayTwo = document.querySelector('#forecast-2')
+        var dayTwo = document.querySelector('#day-2')
+        var dayTwoForecast = moment().add(2, 'day').format('L')
+        dayTwo.textContent = dayTwoForecast;
 
-        var dayThree = document.querySelector('#forecast-3')
+        var dayThree = document.querySelector('#day-3')
+        var dayThreeForecast = moment().add(3, 'day').format('L')
+        dayThree.textContent = dayThreeForecast;
 
-        var dayFour = document.querySelector('#forecast-4')
+        var dayFour = document.querySelector('#day-4')
+        var dayFourForecast = moment().add(4, 'day').format('L')
+        dayFour.textContent = dayFourForecast;
 
-        var dayFive = document.querySelector('#forecast-5')
+        var dayFive = document.querySelector('#day-5')
+        var dayFiveForecast = moment().add(5, 'day').format('L')
+        dayFive.textContent = dayFiveForecast;
 
         var tempDisplay = document.querySelector ('#temp-${i}')
         var dayTemp = list[i].main.temp;
