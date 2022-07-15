@@ -150,7 +150,7 @@ var requestForecast = function(city) {
  var updatedForecast = function(list) {
      for (var i=1; i<= 5; i++) {
 
-        var dayOne = document.querySelector("#forecast-1")
+        var dayOne = document.querySelector("#day-1")
         var dayOneForecast = moment().add(1, 'day').format('L')
         dayOne.textContent = dayOneForecast
 
@@ -162,8 +162,8 @@ var requestForecast = function(city) {
 
         var dayFive = document.querySelector('#forecast-5')
 
-        var tempDisplay = document.querySelector ('#temperature-${i}')
-        var dayTemp = moment().add(5, "day").format('L');
+        var tempDisplay = document.querySelector ('#temp-${i}')
+        var dayTemp = list[i].main.temp;
         tempDisplay.textContent= dayTemp;
 
      }

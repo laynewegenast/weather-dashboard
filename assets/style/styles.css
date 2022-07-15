@@ -85,6 +85,7 @@ header {
 .forecast {
     margin: 25px;
     margin-top: 10px;
+    margin-left: 10px;
 }
 .forecast-text {
     margin: 10px;
