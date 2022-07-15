@@ -51,10 +51,18 @@ header {
     margin-left: 10px;
 }
 
+.subtitle {
+    margin-left: 20px;
+}
+
+.date {
+    margin-left: 20px;
+}
+
 .weather-input {
     color: #443627;
     font-weight: bolder;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .fiveday {
