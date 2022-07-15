@@ -150,6 +150,8 @@ var requestForecast = function(city) {
  var updatedForecast = function(list) {
      for (var i=1; i<= 5; i++) {
 
+        var dayOne = document.querySelector("#")
+
      }
  }
 
