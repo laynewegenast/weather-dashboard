@@ -8,7 +8,7 @@ var searchedCity = document.querySelector("#searched-city");
 var currentWeather = document.querySelector("#current-weather");
 var uvIndex = document.querySelector("#uv-index");
 var fiveDayForecast = document.querySelector("#five-day-forecast");
-var previousCity = document.getElementById("#previous-search")
+var previousCity = document.getElementById("previous-search")
 
 var cityArray = [];
 
@@ -32,7 +32,6 @@ var formSubmitHandler = function(event) {
     }
 };
 
-//previously searched city data
 var clickHandler = function (event) {
 
     var clickCity = event.currentTarget.textContent;
@@ -40,6 +39,9 @@ var clickHandler = function (event) {
     getCurrentWeather(clickCity);
     requestForecast(clickCity);
 };
+
+
+
 
 //request API
 var getCurrentWeather = function(city) {
@@ -104,7 +106,7 @@ var displayCurrentWeather = function(city, searchTerm) {
     var currentWind = city.wind.speed + " MPH";
     displayWind.textContent = currentWind;
 
-    var newCity = document.createElement("li");
+    var newCity = document.createElement("ul");
     newCity.className = "prev-search-item";
     newCity.textContent = searchTerm;
     newCity.addEventListener("click", clickHandler);
@@ -133,16 +135,21 @@ var requestUV = function(data) {
 
 //5 day forecast
 var requestForecast = function(city) {
-    var forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&cnt=6&appid=" + apiID;
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiID;
 
-    fetch(forecast).then(function(response) {
-        if(response.ok) {
-            response.json().then(function(data){
-                updatedForecast(data.list);
+    // if response was successful 
+    fetch(apiURL).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                updatedForecast(data, city);
             });
         } else {
-            alert("error");
+            alert("Error:" + response.statusText);
         }
+    })
+    // if network error 
+    .catch(function(error) {
+        alert("Unable to connect to Open Weather");
     })
 };
 
@@ -170,8 +177,8 @@ var requestForecast = function(city) {
         var dayFiveForecast = moment().add(5, 'day').format('L')
         dayFive.textContent = dayFiveForecast;
 
-        var tempDisplay = document.querySelector ('#temp-${i}')
-        var dayTemp = list[i].main.temp;
+        var tempDisplay = document.querySelector (`#temp-${i}`)
+        var dayTemp = list[i].main.temp + ' °F';
         tempDisplay.textContent= dayTemp;
 
      }
