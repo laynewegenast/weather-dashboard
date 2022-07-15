@@ -41,6 +41,11 @@ header {
     justify-content: center;
 }
 
+.prev-search {
+    margin-left: 15px;
+    list-style: none;
+}
+
 .userSearch {
     color: #FFFFFF;
     background-color: #fd5200;
