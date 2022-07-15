@@ -150,7 +150,15 @@ var requestForecast = function(city) {
  var updatedForecast = function(list) {
      for (var i=1; i<= 5; i++) {
 
-        var dayOne = document.querySelector("#")
+        var dayOne = document.querySelector("#forecast-1")
+
+        var dayTwo = document.querySelector('#forecast-2')
+
+        var dayThree = document.querySelector('#forecast-3')
+
+        var dayFour = document.querySelector('#forecast-4')
+
+        var dayFive = document.querySelector('#forecast-5')
 
      }
  }
