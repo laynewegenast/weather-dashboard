@@ -177,9 +177,13 @@ var requestForecast = function(city) {
         var dayFiveForecast = moment().add(5, 'day').format('L')
         dayFive.textContent = dayFiveForecast;
 
-        var tempDisplay = document.querySelector (`#temp-${i}`)
+        var displayTemp = document.querySelector (`#temp-${i}`)
         var dayTemp = list[i].main.temp + ' °F';
-        tempDisplay.textContent= dayTemp;
+        displayTemp.textContent= dayTemp;
+
+        var displayHumidity = document.querySelector( `#humidity-${i}`)
+        var dayHumid = list[i].main.humidity;
+        displayHumidity.textContent = dayHumid;
 
      }
  }
